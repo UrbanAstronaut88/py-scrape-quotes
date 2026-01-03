@@ -1,5 +1,5 @@
 import csv
-from dataclasses import dataclass, fields, astuple
+from dataclasses import dataclass, fields
 from typing import List
 from urllib.parse import urljoin
 import requests
@@ -17,7 +17,9 @@ class Quote:
     author: str
     tags: list[str]
 
+
 AUTHORS_FIELDS = [field.name for field in fields(Quote)]
+
 
 def parse_single_quote(quote: Tag) -> Quote:
     return Quote(
@@ -58,7 +60,6 @@ def main(output_csv_path: str) -> None:
                 quote.author,
                 str(quote.tags),
             ])
-
 
 
 if __name__ == "__main__":
